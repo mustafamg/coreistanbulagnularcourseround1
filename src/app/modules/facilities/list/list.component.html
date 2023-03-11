@@ -1,0 +1,7 @@
+<button (click)="showFacilities()">Show Facilities</button> | <button (click)="addDummyFacility()">Add Dummy Facilities</button> 
+<div *ngFor="let facility of facilities">
+<h3>{{ facility.name }}</h3>
+<button (click)="pickFacility(facility)">Pick Facility</button> 
+</div>
+
+<h1>{{ pickedFacilityName }}</h1>
