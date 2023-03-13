@@ -13,6 +13,7 @@ export class ListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.showFacilities();
   }
 
   showFacilities() {
@@ -24,6 +25,6 @@ export class ListComponent implements OnInit {
   }
 
   addDummyFacility(){
-    this.facilities.push({id:-1,name:"Some dummy facility"});
+    this.facilities.push({id:-1,name:"Some dummy facility", active:true, description:""});
   }
 }

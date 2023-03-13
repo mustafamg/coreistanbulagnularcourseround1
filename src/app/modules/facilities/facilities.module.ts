@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
 
 import { FacilitiesRoutingModule } from './facilities-routing.module';
 import { FacilitiesComponent } from './facilities.component';
@@ -11,11 +13,14 @@ import { DetailsComponent } from './details/details.component';
   declarations: [
     FacilitiesComponent,
     ListComponent,
-    DetailsComponent
+    DetailsComponent,
+    
   ],
   imports: [
     CommonModule,
-    FacilitiesRoutingModule
+    FacilitiesRoutingModule,
+    MatIconModule,
+    MatButtonModule
   ]
 })
 export class FacilitiesModule { }
