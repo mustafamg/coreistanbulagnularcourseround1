@@ -1,13 +1,21 @@
 <button (click)="showFacilities()">Show Facilities</button> | <button (click)="addDummyFacility()">Add Dummy
     Facilities</button>
 <div *ngFor="let facility of facilities">
-    <ng-container *ngIf="facility.active">
+    <ng-container>
         <h3 [title]="'Facility id:' + facility.id">{{ facility.name }}</h3>
         <p *ngIf="facility.description">
-            Description: {{ facility.description }}
-          </p>
-          <a  mat-raised-button color="accent" [routerLink]="['/facilities/details', facility.id]">Details</a>
-          <br/>
+            Description: {{ facility.description }}            
+        </p>
+        <ng-container *ngIf="facility.instrumentList.length > 0">
+            <p>Instruments Linked to this Facility:</p>
+            <ul>
+                <li *ngFor="let instrument of facility.instrumentList">{{instrument.name}}</li>
+            </ul>
+        </ng-container>
+        
+        
+        <a mat-raised-button color="accent" [routerLink]="['/facilities/details', facility.id]">Details</a>
+        <br />
         <button mat-raised-button color="primary" (click)="pickFacility(facility)">Pick Facility</button>
     </ng-container>
     <hr>
