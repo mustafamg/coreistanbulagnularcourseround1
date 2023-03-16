@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Instrument, instruments } from '../../instruments/models/instruments';
 import { facilities, Facility } from '../models/facilities';
 @Component({
   selector: 'app-facilities-list',
@@ -8,8 +9,10 @@ import { facilities, Facility } from '../models/facilities';
 export class ListComponent implements OnInit {
 
   facilities: Facility[] = [];
+  instrumentList: Instrument[] = [];
   pickedFacilityName: string = "";
   constructor() {
+    this.instrumentList = instruments;
   }
 
   ngOnInit(): void {
@@ -18,6 +21,9 @@ export class ListComponent implements OnInit {
 
   showFacilities() {
     this.facilities = facilities;
+    for(let i = 0; i < this.facilities.length; i++){
+      this.facilities[i].instrumentList = this.instrumentList.filter(s => s.facilityId == this.facilities[i].id);
+    }
   }
 
   pickFacility(facility: Facility) {
@@ -25,6 +31,6 @@ export class ListComponent implements OnInit {
   }
 
   addDummyFacility(){
-    this.facilities.push({id:-1,name:"Some dummy facility", active:true, description:""});
+    this.facilities.push({id:-1,name:"Some dummy facility", active:true, description:"",instrumentList: []});
   }
 }

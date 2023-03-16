@@ -1,14 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DetailsComponent } from './details/details.component';
-import { FacilitiesComponent } from './facilities.component';
+import { InstrumentsComponent } from './instruments.component';
 import { ListComponent } from './list/list.component';
 
 const routes: Routes = [
-  { path: '', component: FacilitiesComponent, 
+  { path: '', component: InstrumentsComponent, 
     children: [
       { path: 'list', component: ListComponent },
-      { path: 'details/:facilityId', component: DetailsComponent },
       { path: '', redirectTo: 'list', pathMatch: 'full'}
   ]}, 
 ];
@@ -17,4 +15,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class FacilitiesRoutingModule { }
+export class InstrumentsRoutingModule { }
