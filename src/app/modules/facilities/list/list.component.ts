@@ -7,10 +7,9 @@ import { facilities, Facility } from '../models/facilities';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-
-  facilities: Facility[] = [];
+  facilityList: Facility[] = [];
   instrumentList: Instrument[] = [];
-  pickedFacilityName: string = "";
+  displayedColumns = ['id', 'name', 'description', 'instruments', 'action'];
   constructor() {
     this.instrumentList = instruments;
   }
@@ -20,17 +19,13 @@ export class ListComponent implements OnInit {
   }
 
   showFacilities() {
-    this.facilities = facilities;
-    for(let i = 0; i < this.facilities.length; i++){
-      this.facilities[i].instrumentList = this.instrumentList.filter(s => s.facilityId == this.facilities[i].id);
+    this.facilityList = facilities;
+    for(let i = 0; i < this.facilityList.length; i++){
+      this.facilityList[i].instrumentList = this.instrumentList.filter(s => s.facilityId == this.facilityList[i].id);
     }
   }
 
-  pickFacility(facility: Facility) {
-    this.pickedFacilityName = facility.name;
-  }
-
   addDummyFacility(){
-    this.facilities.push({id:-1,name:"Some dummy facility", active:true, description:"",instrumentList: []});
+    this.facilityList.push({id:-1,name:"Some dummy facility", active:true, description:"",instrumentList: []});
   }
 }

@@ -1,24 +1,49 @@
-<button (click)="showFacilities()">Show Facilities</button> | <button (click)="addDummyFacility()">Add Dummy
-    Facilities</button>
-<div *ngFor="let facility of facilities">
-    <ng-container>
-        <h3 [title]="'Facility id:' + facility.id">{{ facility.name }}</h3>
-        <p *ngIf="facility.description">
-            Description: {{ facility.description }}            
-        </p>
-        <ng-container *ngIf="facility.instrumentList.length > 0">
-            <p>Instruments Linked to this Facility:</p>
-            <ul>
-                <li *ngFor="let instrument of facility.instrumentList">{{instrument.name}}</li>
-            </ul>
-        </ng-container>
-        
-        
-        <a mat-raised-button color="accent" [routerLink]="['/facilities/details', facility.id]">Details</a>
-        <br />
-        <button mat-raised-button color="primary" (click)="pickFacility(facility)">Pick Facility</button>
-    </ng-container>
-    <hr>
-</div>
+<mat-card class="p-2">
+    <mat-card-title>
+        <div class="col-12 text-end p-2">
+            <button mat-raised-button color="primary" class="text-start" (click)="addDummyFacility()">
+                <mat-icon>add</mat-icon> Add Dummy Facilities
+            </button>
+        </div>
 
-<h1>{{ pickedFacilityName }}</h1>
+    </mat-card-title>
+
+    <mat-divider></mat-divider>
+
+    <mat-card-content class="p-3">
+        <table mat-table [dataSource]="facilityList" class="w-100">
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef>No.</th>
+                <td mat-cell *matCellDef="let row">{{row.id}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef>Name</th>
+                <td mat-cell *matCellDef="let row">{{row.Name}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="description">
+                <th mat-header-cell *matHeaderCellDef>Description</th>
+                <td mat-cell *matCellDef="let row">{{row.description}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="instruments">
+                <th mat-header-cell *matHeaderCellDef>Instruments</th>
+                <td mat-cell *matCellDef="let row">
+                    <ul>
+                        <li *ngFor="let instrument of row.instrumentList">{{instrument.name}}</li>
+                    </ul>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef>Action</th>
+                <td mat-cell *matCellDef="let row">
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </mat-card-content>
+</mat-card>
