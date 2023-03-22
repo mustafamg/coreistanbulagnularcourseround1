@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {MatIconModule} from '@angular/material/icon';
-import {MatLegacyButtonModule as MatButtonModule} from '@angular/material/legacy-button';
-import {MatLegacyDialogModule as MatDialogModule} from '@angular/material/legacy-dialog';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatLegacyCardModule as MatCardModule} from '@angular/material/legacy-card';
-import {MatLegacySnackBarModule as MatSnackBarModule} from '@angular/material/legacy-snack-bar';
-import {MatLegacyInputModule as MatInputModule} from '@angular/material/legacy-input';
-import {MatLegacySelectModule as MatSelectModule} from '@angular/material/legacy-select';
-import {MatLegacyTableModule as MatTableModule} from '@angular/material/legacy-table';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
 
 import { FacilitiesRoutingModule } from './facilities-routing.module';
 import { FacilitiesComponent } from './facilities.component';
@@ -21,7 +21,7 @@ import { DetailsComponent } from './details/details.component';
     FacilitiesComponent,
     ListComponent,
     DetailsComponent,
-    
+
   ],
   imports: [
     CommonModule,
@@ -30,11 +30,11 @@ import { DetailsComponent } from './details/details.component';
     MatButtonModule,
     MatDialogModule,
     MatDividerModule,
-    MatCardModule,
     MatSnackBarModule,
     MatInputModule,
     MatSelectModule,
     MatTableModule,
+    MatCardModule
   ]
 })
 export class FacilitiesModule { }

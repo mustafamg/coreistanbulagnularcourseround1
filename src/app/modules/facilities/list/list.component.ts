@@ -1,31 +1,37 @@
-import { Component, OnInit } from '@angular/core';
-import { Instrument, instruments } from '../../instruments/models/instruments';
-import { facilities, Facility } from '../models/facilities';
+import { Component } from '@angular/core';
+import { Instrument } from '../../instruments/models/instruments';
+import { Facility } from '../models/facilities';
+import { FacilityService } from '../services/facility.service';
 @Component({
   selector: 'app-facilities-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css']
 })
-export class ListComponent implements OnInit {
+export class ListComponent{
   facilityList: Facility[] = [];
   instrumentList: Instrument[] = [];
   displayedColumns = ['id', 'name', 'description', 'instruments', 'action'];
-  constructor() {
-    this.instrumentList = instruments;
-  }
-
-  ngOnInit(): void {
+  constructor(
+    private facilityService: FacilityService
+  ) {
     this.showFacilities();
   }
 
   showFacilities() {
-    this.facilityList = facilities;
-    for(let i = 0; i < this.facilityList.length; i++){
-      this.facilityList[i].instrumentList = this.instrumentList.filter(s => s.facilityId == this.facilityList[i].id);
-    }
+    this.facilityService.get().subscribe(data => {
+      this.facilityList = data;
+    });
   }
 
   addDummyFacility(){
-    this.facilityList.push({id:-1,name:"Some dummy facility", active:true, description:"",instrumentList: []});
+    let dummyFacility : Facility = {
+      id: undefined,
+      name: "Some dummy facility",
+      description: "",
+      instrumentList: []
+    }
+    this.facilityService.post(dummyFacility).subscribe(_ => {
+      this.showFacilities();
+    })
   }
 }
