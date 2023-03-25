@@ -6,12 +6,12 @@
         <p *ngIf="facility.description">
             Description: {{ facility.description }}            
         </p>
-        <ng-container *ngIf="facility.instrumentList.length > 0">
+        <!-- <ng-container *ngIf="facility.instrumentList.length > 0">
             <p>Instruments Linked to this Facility:</p>
             <ul>
                 <li *ngFor="let instrument of facility.instrumentList">{{instrument.name}}</li>
             </ul>
-        </ng-container>
+        </ng-container> -->
         
         
         <a mat-raised-button color="accent" [routerLink]="['/facilities/details', facility.id]">Details</a>
