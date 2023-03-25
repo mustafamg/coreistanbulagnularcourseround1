@@ -27,7 +27,6 @@ import { DetailsComponent } from './details/details.component';
     CommonModule,
     FacilitiesRoutingModule,
     MatIconModule,
-    MatButtonModule,
     MatDialogModule,
     MatDividerModule,
     MatSnackBarModule,
