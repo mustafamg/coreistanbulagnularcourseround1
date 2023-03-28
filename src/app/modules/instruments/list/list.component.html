@@ -1,4 +1,50 @@
-<p>list works!</p>
-<div *ngFor="let instrument of instrumentList">
-    <h1>{{instrument.id}}. {{instrument.name}} ({{instrument.facilityName}})</h1>
-</div>
+<mat-card class="p-2 w-100">
+    <mat-card-title>
+        <div class="col-12 text-end p-2">
+            <button mat-raised-button color="primary" class="text-start" (click)="addDummyInstrument()">
+                <mat-icon>add</mat-icon> Dummy Instrument
+            </button>
+            <button mat-raised-button color="warn" class="text-start m-2" (click)="addInstrument()">
+                <mat-icon>add</mat-icon> Instrument
+            </button>
+        </div>
+
+    </mat-card-title>
+
+    <mat-divider></mat-divider>
+
+    <mat-card-content class="p-3">
+        <table mat-table [dataSource]="instrumentList" class="w-100">
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef>No.</th>
+                <td mat-cell *matCellDef="let row">{{row.id}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef>Name</th>
+                <td mat-cell *matCellDef="let row">{{row.name}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="description">
+                <th mat-header-cell *matHeaderCellDef>Description</th>
+                <td mat-cell *matCellDef="let row">{{row.description}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="facility">
+                <th mat-header-cell *matHeaderCellDef>Facility</th>
+                <td mat-cell *matCellDef="let row">
+                    {{row.facility.name}}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef>Action</th>
+                <td mat-cell *matCellDef="let row">
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </mat-card-content>
+</mat-card>
