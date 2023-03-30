@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DetailsComponent } from './details/details.component';
+import { EditComponent } from './edit/edit.component';
 import { FacilitiesComponent } from './facilities.component';
 import { ListComponent } from './list/list.component';
 
@@ -9,6 +10,7 @@ const routes: Routes = [
     children: [
       { path: 'list', component: ListComponent },
       { path: 'details/:facilityId', component: DetailsComponent },
+      { path: 'create', component: EditComponent },
       { path: '', redirectTo: 'list', pathMatch: 'full'}
   ]}, 
 ];

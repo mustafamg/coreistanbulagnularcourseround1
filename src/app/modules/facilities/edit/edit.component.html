@@ -1,0 +1,12 @@
+<form [formGroup]="facilityForm" (submit)="createFacility()">
+  <label for="name">Room title: </label>
+  <input id="name" type="text" formControlName="name" required>
+
+  <label for="description">Description: </label>
+  <input id="description" type="text" formControlName="description">
+
+  <p>Complete the form to enable button.</p>
+  <button type="submit" [disabled]="!facilityForm.valid">Submit</button>
+</form>
+
+<hr>

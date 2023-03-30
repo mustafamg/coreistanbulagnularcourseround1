@@ -7,7 +7,7 @@ import { FacilityService } from '../services/facility.service';
   selector: 'app-facilities-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css'],
-  providers:[FacilitiesService]
+  providers:[FacilityService]
 })
 
 export class ListComponent{
@@ -23,17 +23,5 @@ export class ListComponent{
     this.facilityService.get().subscribe(data => {
       this.facilityList = data;
     });
-  }
-
-  addDummyFacility(){
-    let dummyFacility : Facility = {
-      id: undefined,
-      name: "Some dummy facility",
-      description: "",
-      instrumentList: []
-    }
-    this.facilityService.post(dummyFacility).subscribe(_ => {
-      this.showFacilities();
-    })
   }
 }

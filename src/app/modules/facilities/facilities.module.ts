@@ -14,6 +14,9 @@ import { FacilitiesRoutingModule } from './facilities-routing.module';
 import { FacilitiesComponent } from './facilities.component';
 import { ListComponent } from './list/list.component';
 import { DetailsComponent } from './details/details.component';
+import { EditComponent } from './edit/edit.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -21,11 +24,13 @@ import { DetailsComponent } from './details/details.component';
     FacilitiesComponent,
     ListComponent,
     DetailsComponent,
-
+    EditComponent,
   ],
   imports: [
     CommonModule,
     FacilitiesRoutingModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
     MatIconModule,
     MatDialogModule,
     MatDividerModule,
