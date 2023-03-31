@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { FormBuilder, RequiredValidator, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IFormGroup, RxFormBuilder } from '@rxweb/reactive-form-validators';
+import { RxFormBuilder } from '@rxweb/reactive-form-validators';
 
-import { Facility, FacilityEditModel } from '../models/facilities';
+import { Facility } from '../models/facilities';
 import { FacilityService } from '../services/facility.service';
 @Component({
   selector: 'app-edit',
