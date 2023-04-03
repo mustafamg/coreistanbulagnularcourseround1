@@ -18,6 +18,14 @@ export class FacilityService {
   }
 
   post(item: Facility) {
-    return this.http.post(`${API_FACILITY_URL}`, item );
+    return this.http.post(`${API_FACILITY_URL}`, item);
+  }
+
+  put(item: Facility) {
+    return this.http.put(`${API_FACILITY_URL}/` + item.id, item);
+  }
+
+  delete(id: number) {
+    return this.http.delete(`${API_FACILITY_URL}/` + id);
   }
 }
