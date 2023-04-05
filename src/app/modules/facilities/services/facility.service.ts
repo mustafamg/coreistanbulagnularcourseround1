@@ -17,6 +17,10 @@ export class FacilityService {
     return this.http.get<Facility[]>(`${API_FACILITY_URL}`)
   }
 
+  getById(id: number): Observable<Facility> {
+    return this.http.get<Facility>(`${API_FACILITY_URL}/${id}`);
+  }
+
   post(item: Facility) {
     return this.http.post(`${API_FACILITY_URL}`, item );
   }

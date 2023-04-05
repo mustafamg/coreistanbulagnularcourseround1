@@ -1,4 +1,5 @@
 <form [formGroup]="facilityForm" (submit)="createFacility()">
+  <input type="hidden" formControlName="id">
   <label for="name">Room title: </label>
   <input id="name" type="text" formControlName="name" required>
 

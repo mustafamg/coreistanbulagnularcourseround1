@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RxFormBuilder } from '@rxweb/reactive-form-validators';
 
 import { Facility } from '../models/facilities';
@@ -12,13 +12,23 @@ import { FacilityService } from '../services/facility.service';
   providers:[RxFormBuilder]
 })
 export class EditComponent {
+  currentId: number = 0;
+
   facilityForm = this.fb.group({
+    id: [0],
     name: ['', [ Validators.required, Validators.minLength(3), Validators.maxLength(100) ]],
     description: [''],
   });
 
-  constructor(private fb: FormBuilder, private service:FacilityService, private router:Router) {
-      
+  constructor(
+    private fb: FormBuilder,
+     private service:FacilityService, 
+      private route: ActivatedRoute,
+     private router:Router) {
+    this.currentId = this.route.snapshot.params['facilityId'];
+    this.service.getById(this.currentId).subscribe((data: Facility) => {
+      this.facilityForm.patchValue(data);
+    });
   }
 
   createFacility() {

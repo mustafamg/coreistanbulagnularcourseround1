@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Facility } from '../models/facilities';
+import { FacilityService } from '../services/facility.service';
 
 @Component({
   selector: 'app-details',
@@ -9,16 +10,16 @@ import { Facility } from '../models/facilities';
 })
 export class DetailsComponent implements OnInit {
   currentId: number = 0;
-
-  constructor(private route: ActivatedRoute) {
+  facility: Facility = {} as Facility;
+  constructor(private route: ActivatedRoute, private service: FacilityService) {
     this.currentId = this.route.snapshot.params['facilityId'];
   }
 
   ngOnInit(): void {
-    // const mapper = this.route.snapshot.paramMap;
-    // this.currentId = Number(mapper.get("id"));
-    // this.currentId = this.route.snapshot.params['facilityId'];
-    // this.facilities = facilities.filter(f => f.id == this.currentId)[0];
+    this.service.getById(this.currentId).subscribe((data: Facility) => {
+      this.facility = data;
+      //this.facilityForm.patchValue(data);
+    });
   }
 
 }

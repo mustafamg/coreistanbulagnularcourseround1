@@ -17,6 +17,7 @@ import { DetailsComponent } from './details/details.component';
 import { EditComponent } from './edit/edit.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CreateFacilityComponent } from './create-facility/create-facility.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ListComponent,
     DetailsComponent,
     EditComponent,
+    CreateFacilityComponent,
   ],
   imports: [
     CommonModule,
