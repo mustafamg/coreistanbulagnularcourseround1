@@ -4,6 +4,8 @@ import { FacilityService } from '../services/facility.service';
 import { Facility } from '../models/facilities';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { catchError } from 'rxjs/operators';
+import { EMPTY, Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-add-facility-dialog',
@@ -33,12 +35,21 @@ export class AddFacilityDialogComponent {
     if (!form.valid) {
       return;
     }
-    let action = this.isNew ? this.service.post(form.value as Facility) : this.service.put(form.value as Facility);
+    if (this.isNew) {
+      form.value.id = 0;
+      this.service.post(form.value as Facility).pipe(catchError(err=>handleError(err))).subscribe(() => handleResponse('Facility Added'));
+    }
+    else {
+      this.service.put(form.value as Facility).pipe(catchError(err=>handleError(err))).subscribe(() => handleResponse('Facility Updated'));
+    }
 
-    action.subscribe(() => {
-      let message = this.isNew ? 'Facility Added' : 'Facility Edited';
+    const handleResponse = (message: string) => {
       this.snackBar.open(message, undefined, { duration: 3000, horizontalPosition: 'end' });
       this.dialog.closeAll();
-    });
+    }
+    const handleError = (error: any):Observable<never>  => {
+      this.snackBar.open("error:" + error.message, undefined, { duration: 3000, horizontalPosition: 'end' });
+      return EMPTY;
+    }
   }
 }
