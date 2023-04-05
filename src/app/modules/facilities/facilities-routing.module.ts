@@ -10,8 +10,7 @@ const routes: Routes = [
     path: '', component: FacilitiesComponent,
     children: [
       { path: 'list', component: ListComponent },
-      { path: 'details/:facilityId', component: DetailsComponent },
-      { path: 'edit/:facilityId', component: EditComponent },
+      { path: 'details/:facilityId', component: DetailsComponent }
       { path: 'create', component: CreateFacilityComponent },
       { path: '', redirectTo: 'list', pathMatch: 'full'}
   ]}, 
