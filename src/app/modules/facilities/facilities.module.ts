@@ -14,19 +14,16 @@ import { FacilitiesRoutingModule } from './facilities-routing.module';
 import { FacilitiesComponent } from './facilities.component';
 import { ListComponent } from './list/list.component';
 import { DetailsComponent } from './details/details.component';
-import { EditComponent } from './edit/edit.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { ReactiveFormsModule } from '@angular/forms';
-import { CreateFacilityComponent } from './create-facility/create-facility.component';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddFacilityDialogComponent } from './add-facility-dialog/add-facility-dialog.component';
 
 @NgModule({
   declarations: [
     FacilitiesComponent,
     ListComponent,
     DetailsComponent,
-    EditComponent,
-    CreateFacilityComponent,
+    AddFacilityDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -40,7 +37,8 @@ import { CreateFacilityComponent } from './create-facility/create-facility.compo
     MatInputModule,
     MatSelectModule,
     MatTableModule,
-    MatCardModule
+    MatCardModule,
+    FormsModule,
   ]
 })
 export class FacilitiesModule { }
